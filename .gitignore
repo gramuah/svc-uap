@@ -1,0 +1,8 @@
+*.pyc
+*.json
+!gt/gt-thumos14.json
+*.hdf5
+*.log
+*.png
+!png/svc-uap.png
+*.idea
