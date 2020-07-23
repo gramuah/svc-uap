@@ -15,7 +15,7 @@ This project contains the code of the SVC-UAP model.  We provide the best parame
     * [ActivityNet1.3](#activitynet13)
     * [Thumos'14](#thumos14)
   * [Usage](#usage)
-    * [*Recommended: Prepare your Python environmen*](#recommended-prepare-your-python-environment)
+    * [*Recommended: Prepare your Python environment*](#recommended-prepare-your-python-environment)
     * [Exeution options](#execution-options)
     * [Reproducing our results](#reproducing-our-results)
   * [Results](#results)
@@ -78,8 +78,6 @@ wget -O gt/activity_net.v1-3.min.json http://ec2-52-25-205-214.us-west-2.compute
 
 ### Usage
 
-----
-
 #### *Recommended: Prepare your Python environment*
 
 *The code has been prepared to be run with Python 3.7. As a recommendation, we propose to use Conda to create a python environment with the same version and with all the needed packages.*
@@ -91,8 +89,6 @@ conda env create -f environment.yml
 ```
 
 *As an alternative, in case you prefer to work with pip, we also provide the file `requirements.txt` with all the packages the are required.*
-
-----
 
 #### Execution options
 
