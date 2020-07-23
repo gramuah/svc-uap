@@ -12,7 +12,7 @@ This project contains the code of the SVC-UAP model.  We provide the best parame
 
   * [Citation](#citation)
   * [Preparing the data](#preparing-the-data)
-    * [ActivityNet1.3]
+    * [ActivityNet1.3](#activitynet)
     * [Thumos'14](#thumos'14)
   * [Usage](#usage)
     * [*Recommended: Prepare your Python environmen*](#recommended:-prepare-your-python-environment)
