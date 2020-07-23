@@ -96,9 +96,13 @@ def main(data, gt, h5, set, init_n, n, th, c, rpth, res, eval, log, fig):
         write_res(ppsals, res)
 
     print('Running evaluation.')
-    average_n_proposals, average_recall, recall = run_evaluation(gt, res,
+    if not os.path.isfile(res):
+        print(f'{res}: No such file or directory.')
+        return
+    else:
+        average_n_proposals, average_recall, recall = run_evaluation(gt, res,
                                                                  subset=set)
-    plot_metric(average_n_proposals, average_recall, recall, fig_file=fig)
+        plot_metric(average_n_proposals, average_recall, recall, fig_file=fig)
 
     return
 
