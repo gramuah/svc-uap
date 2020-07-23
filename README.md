@@ -1,10 +1,14 @@
+[TOC]
+
 # SVC for Unsupervised Temporal Action Proposals
-SVC-UAP model for unsupervised Temporal Action Proposals. The pipeline was presented [here](https://www.mdpi.com/1424-8220/20/10/2953/htm).
+
+SVC-UAP model for unsupervised Temporal Action Proposals, which was presented [here](https://www.mdpi.com/1424-8220/20/10/2953/htm).
+
+This project contains the code of the SVC-UAP model.  We provide the best parameter configuration for ActivityNet1.3 and Thumos14 datasets, though you can try your own configuration.
 
 <p align="center">
   <img src="./png/svc-uap.png" alt="Unsupervised Temporal Action Proposals" title="Unsupervised Temporal Action Proposals with SVC" width="652" zoom="343" align="center" />
 </p>
-
 ### Citation
 
 If you find anything of this repository useful for your projects, please consider citing this work:
@@ -20,11 +24,7 @@ If you find anything of this repository useful for your projects, please conside
 }
 ```
 
-#### What can you find?
-
-This project contains the code of the SVC-UAP model.  We provide the best parameter configuration for ActivityNet1.3 and Thumos14 datasets, though you can try your own configuration.
-
-#### Preparing the data
+### Preparing the data
 
 Before you start, please be sure to prepare the data as described below.
 
@@ -64,7 +64,7 @@ wget -O gt/activity_net.v1-3.min.json http://ec2-52-25-205-214.us-west-2.compute
 
   Once you have them, store them as: `h5/c3d-thumos14.hdf5` 
 
-#### Usage
+### Usage
 
 ------
 
@@ -82,6 +82,8 @@ conda env create -f environment.yml
 
 ------
 
+##### Execution options
+
 Once you have prepared the data, change the current directory to `source/`. Running `main.py` will lunch the whole svc-uap. However, remember to configure the following options:
 
 - `-d`: name of the dataset.
@@ -98,6 +100,8 @@ Once you have prepared the data, change the current directory to `source/`. Runn
 - `-log`: log file with execution information.
 - `-fig`: figure with th AR-AN metric.
 
+##### Reproducing our results
+
 If you just run the following command:
 
 ```bash
@@ -112,7 +116,7 @@ On the other hand, if you want to reproduce the results of the best configuratio
 python main.py -data Thumos14 -gt ../gt/gt-thumos14.json -h5 ../h5/c3d-thumos14.hdf5 -set Test -init_n 8 -n 8 -th 0.09 -c 0.019306 -rpth 0.1
 ```
 
-#### Results
+### Results
 
 The code is prepared to provide at the end of execution the performance of the SVC-UAP method in terms of the AR-AN metric (Average Recall - Average Number of proposals). To this end, the code creates the directory `res/` (in the project directory) and stores:
 
@@ -123,11 +127,8 @@ In case you wish to evaluate again the results, you can lunch again the project 
 
 The code to evaluate Temporal Action Proposals is taken from the official ActivityNet evaluation repository: https://github.com/activitynet/ActivityNet
 
-#### Contact
+### Contact
 
 For any question, you can open an issue or contact:
 
-```
-Marcos Baptista Ríos: marcos.baptista@uah.es
-```
-
+- Marcos Baptista Ríos: marcos.baptista@uah.es
