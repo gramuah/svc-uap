@@ -1,6 +1,5 @@
 import json
 import h5py
-import numpy as np
 
 
 def save_video_names(name):
@@ -35,7 +34,7 @@ def get_vid_info(video, gt, h5, dataset='ActivityNet'):
     h5f = h5py.File(h5, "r")
 
     if dataset == 'ActivityNet':
-        d = h5f['/v_' + video + '/c3d_features'].value
+        d = h5f['/v_' + video + '/c3d_features'][()]
         duration = parsedjf['database'][video]['duration']
         fps = (8 * d.shape[0] + 8) / duration
     else:
@@ -43,10 +42,3 @@ def get_vid_info(video, gt, h5, dataset='ActivityNet'):
         fps = parsedjf['database'][video]['fps']
 
     return d, fps
-
-
-def obtain_features_AlexNet_fc7(video_name, hdf5_file='../hdf5Files/AlexNet_fc7_features.hdf5'):
-    h5f = h5py.File(hdf5_file, 'r')
-    d = h5f[video_name + '/AlexNet_fc7_features'].value
-
-    return d

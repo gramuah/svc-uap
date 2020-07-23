@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn import svm, preprocessing
 from sklearn.preprocessing import normalize
-from sklearn.svm import LinearSVR, LinearSVC
+from sklearn.svm import LinearSVR
 from numpy import linalg as LA
 
 
@@ -13,16 +13,15 @@ def compute_cer(X, y, c=1.0, n_samples=4):
     scaler = preprocessing.MinMaxScaler()
     X_n = scaler.fit_transform(X)
 
-    # Linear version
-    #clsf = svm.SVC(C=c, kernel='linear', class_weight={1:2}) # Linear SVM
-    # with libsvm implementation
-    clsf = svm.SVC(C=c, kernel='linear', class_weight='balanced')  # Linear SVM with libsvm implementation
+    clsf = svm.SVC(C=c, kernel='linear', class_weight='balanced')
 
     clsf.fit(X_n, y)
     y_p = clsf.predict(X_n)
-    err1 = float(np.sum(np.absolute(y[0:(len(y) - n_samples)] - y_p[0:(len(y_p) - n_samples)]))) / float(
-        (len(y) - n_samples))
-    err2 = float(np.sum(np.absolute(y[-n_samples:] - y_p[-n_samples:]))) / float(n_samples)
+    err1 = float(np.sum(np.absolute(y[0:(len(y) - n_samples)]
+                                    - y_p[0:(len(y_p) - n_samples)]))) / \
+           float((len(y) - n_samples))
+    err2 = float(np.sum(np.absolute(y[-n_samples:] - y_p[-n_samples:]))) / \
+           float(n_samples)
     cer = (err1 + err2) / 2
 
     return cer
@@ -30,9 +29,10 @@ def compute_cer(X, y, c=1.0, n_samples=4):
 
 def svc_rp(data, init_n_samples=4, n_samples=4, c=1.0, th=0.5, rp_th=10.0):
     """Classifies the given data and splits or groups the data depending on how
-       tight the classification is. The score associated to each proposal follows an
-       exponential function of the classification error.
-       We implement rank_pooling filtering to discard bg proposals using the threshold rp_th
+       tight the classification is. The score associated to each proposal
+       follows an exponential function of the classification error.
+       We implement rank_pooling filtering to discard bg proposals using the
+       threshold rp_th
     """
     state = 0
     idx = 0
@@ -107,6 +107,7 @@ def svc_rp(data, init_n_samples=4, n_samples=4, c=1.0, th=0.5, rp_th=10.0):
 
 
 def rank_pooling_filter(X, rp_th):
+
     filter_status = True  #initialization, by default: no action detected
 
     #Is it an empty proposal of just one frame?
@@ -158,8 +159,5 @@ def rank_pooling(data, cval, rank_type, norm):
         regrss = LinearSVR(C=cval)
         regrss.fit(v_smooth_norm, labels)
         u = regrss.coef_   #dynamics
-
-        # Obtaining scores for each element of Vt (see rank pooling paper)
-        #s = np.dot(u, np.transpose(v_smooth))
 
         return u

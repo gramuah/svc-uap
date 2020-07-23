@@ -3,7 +3,7 @@ import json
 import time
 
 
-def init_log_file(subset, init_n_samples, n_samples, th, c, rp_th, log_file):
+def init_log(subset, init_n_samples, n_samples, th, c, rp_th, log_file):
 
     with open(log_file, 'w') as lf:
         lf.write(f'Execution initiated on {time.ctime()} \n\n')
@@ -52,7 +52,7 @@ def fill_log_file(iter, video_name, proposals, finished, log_file):
     return
 
 
-def write_results(proposal_data, json_results):
+def write_res(proposal_data, json_results):
 
     with open(json_results, 'w') as fobj:
         json.dump(proposal_data, fobj)

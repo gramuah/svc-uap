@@ -1,8 +1,9 @@
 #!/usr/bin/python
 import argparse
+import os
 import time
 from svc_uap import svc_rp
-from proposals_utils import init_log_file, frame_to_time, fill_log_file, write_results
+from proposals_utils import init_log, frame_to_time, fill_log_file, write_res
 from data_utils import get_videos, get_vid_info
 from evaluation_utils import run_evaluation, plot_metric
 
@@ -20,10 +21,10 @@ def parse_input_arguments():
     p.add_argument('-set', default='validation',
                    choices=['training', 'validation', 'testing', 'Test'],
                    help='Dataset subset.')
-    p.add_argument('-init_n', type=int, default=32,
+    p.add_argument('-init_n', type=int, default=256,
                    help='Initial number of samples to take when starting the '
                         'algorithm or a new proposal.')
-    p.add_argument('-n', type=int, default=32,
+    p.add_argument('-n', type=int, default=256,
                    help='Number of new samples to take when analysing the same'
                         'proposal.')
     p.add_argument('-th', type=float, default=0.1,
@@ -34,7 +35,7 @@ def parse_input_arguments():
                    help='Rank-pooling threshold.')
     p.add_argument('-res', default='../res/svc-uap-res.json',
                    help='Proposals result.')
-    p.add_argument('-eval', action='store_false',
+    p.add_argument('-eval', action='store_true',
                    help='Use this variable if only evaluation is needed.')
     p.add_argument('-log', default='../log/svc-uap.log',
                    help='Log file with execution information.')
@@ -79,7 +80,9 @@ def svc_uap(data, vid_names, gt, h5, init_n, n, th, c, log, rp_th):
 def main(data, gt, h5, set, init_n, n, th, c, rpth, res, eval, log, fig):
 
     if eval:
-        init_log_file(set, init_n, n, th, c, rpth, log)
+        if not os.path.exists('../log'):
+            os.makedirs('../log')
+        init_log(set, init_n, n, th, c, rpth, log)
         vid_names = get_videos(gt, set)
 
         print('Running svm clustering.')
@@ -88,7 +91,9 @@ def main(data, gt, h5, set, init_n, n, th, c, rpth, res, eval, log, fig):
         elapsed_time = time.time() - start_time
         print('Execution time in seconds = ' + str(elapsed_time))
 
-        write_results(ppsals, res)
+        if not os.path.exists('../res'):
+            os.makedirs('../res')
+        write_res(ppsals, res)
 
     print('Running evaluation.')
     average_n_proposals, average_recall, recall = run_evaluation(gt, res,
