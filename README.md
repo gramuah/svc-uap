@@ -1,5 +1,3 @@
-[TOC]
-
 # SVC for Unsupervised Temporal Action Proposals
 
 SVC-UAP model for unsupervised Temporal Action Proposals, which was presented [here](https://www.mdpi.com/1424-8220/20/10/2953/htm).
@@ -9,6 +7,8 @@ This project contains the code of the SVC-UAP model.  We provide the best parame
 <p align="center">
   <img src="./png/svc-uap.png" alt="Unsupervised Temporal Action Proposals" title="Unsupervised Temporal Action Proposals with SVC" width="652" zoom="343" align="center" />
 </p>
+
+
 ### Citation
 
 If you find anything of this repository useful for your projects, please consider citing this work:
