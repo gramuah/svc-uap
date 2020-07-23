@@ -8,8 +8,18 @@ This project contains the code of the SVC-UAP model.  We provide the best parame
   <img src="./png/svc-uap.png" alt="Unsupervised Temporal Action Proposals" title="Unsupervised Temporal Action Proposals with SVC" width="652" zoom="343" align="center" />
 </p>
 
-
 ### Content
+
+  * [Citation](#citation)
+  * [Preparing the data](#preparing-the-data)
+    * [ActivityNet1.3](#activitynet13)
+    * [Thumos'14](#thumos'14)
+  * [Usage](#usage)
+    * [*Recommended: Prepare your Python environmen*](#recommended:-prepare-your-python-environment)
+    * [Exeution options](#execution-options)
+    * [Reproducing our results](#reproducing-our-results)
+  * [Results](#results)
+  * [Contact](#contact)
 
 ### Citation
 
