@@ -35,7 +35,7 @@ def parse_input_arguments():
                    help='Rank-pooling threshold.')
     p.add_argument('-res', default='../res/svc-uap-res.json',
                    help='Proposals result.')
-    p.add_argument('-eval', action='store_true',
+    p.add_argument('-eval', action='store_false',
                    help='Use this variable if only evaluation is needed.')
     p.add_argument('-log', default='../log/svc-uap.log',
                    help='Log file with execution information.')
