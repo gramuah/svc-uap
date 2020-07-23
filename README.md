@@ -9,6 +9,8 @@ This project contains the code of the SVC-UAP model.  We provide the best parame
 </p>
 
 
+[TOC]
+
 ### Citation
 
 If you find anything of this repository useful for your projects, please consider citing this work:
@@ -68,7 +70,7 @@ wget -O gt/activity_net.v1-3.min.json http://ec2-52-25-205-214.us-west-2.compute
 
 ------
 
-##### *Recommended: Prepare your Python environment*
+#### *Recommended: Prepare your Python environment*
 
 *The code has been prepared to be run with Python 3.7. As a recommendation, we propose to use Conda to create a python environment with the same version and with all the needed packages.*
 
@@ -82,7 +84,7 @@ conda env create -f environment.yml
 
 ------
 
-##### Execution options
+#### Execution options
 
 Once you have prepared the data, change the current directory to `source/`. Running `main.py` will lunch the whole svc-uap. However, remember to configure the following options:
 
@@ -100,7 +102,7 @@ Once you have prepared the data, change the current directory to `source/`. Runn
 - `-log`: log file with execution information.
 - `-fig`: figure with th AR-AN metric.
 
-##### Reproducing our results
+#### Reproducing our results
 
 If you just run the following command:
 
