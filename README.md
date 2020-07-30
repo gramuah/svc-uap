@@ -58,7 +58,7 @@ wget -O gt/activity_net.v1-3.min.json http://ec2-52-25-205-214.us-west-2.compute
 
   For ActivityNet1.3, we have extracted C3D features pretrained on Sports1M dataset. Concretely, we used feature vectors from fc6 layer, with dimensionality 4096, corresponding each of them to a 16-frame volume. In each volume, 8 frames are overlapped. Afterwards, feature vectors are reduced to 500 dimensions with PCA.
 
-  Features can be downloaded from [here](https://universidaddealcala-my.sharepoint.com/:u:/g/personal/robertoj_lopez_uah_es/EaCOYYiRcOBCk_Y6I0tUHU0BvUp1jP_jpCkEu3Wn7mpULA?e=gCyedc&download=1).
+  Features can be downloaded from [here](https://universidaddealcala-my.sharepoint.com/:u:/g/personal/robertoj_lopez_uah_es/EbjLefdYzgBEiQW0tJTD-fYB06vGcoSgIywdaVFFJBl7fg?e=ldHbkf&download=1).
   
   Once you have them, store them as: `h5/c3d-activitynet.hdf5` 
 
