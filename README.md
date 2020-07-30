@@ -1,6 +1,6 @@
 # SVC for Unsupervised Temporal Action Proposals
 
-SVC-UAP model for unsupervised Temporal Action Proposals, which was presented [here](https://www.mdpi.com/1424-8220/20/10/2953/htm).
+SVC-UAP model for unsupervised Temporal Action Proposals, which was introduced in the following [paper](https://www.mdpi.com/1424-8220/20/10/2953/htm).
 
 This project contains the code of the SVC-UAP model.  We provide the best parameter configuration for ActivityNet1.3 and Thumos14 datasets, though you can try your own configuration.
 
@@ -56,23 +56,23 @@ wget -O gt/activity_net.v1-3.min.json http://ec2-52-25-205-214.us-west-2.compute
 
 - Features:
 
-  For ActivityNet1.3, we have extracted C3D features pretrained on Sports1M dataset. Concretely, we used feature vectors from fc6 layer, with dimension 4096, corresponding each of them to a 16-frame volume. In each volume, 8 frames are overlapped. Afterwards, feature vectors are reduced to 500d with PCA.
+  For ActivityNet1.3, we have extracted C3D features pretrained on Sports1M dataset. Concretely, we used feature vectors from fc6 layer, with dimensionality 4096, corresponding each of them to a 16-frame volume. In each volume, 8 frames are overlapped. Afterwards, feature vectors are reduced to 500 dimensions with PCA.
 
-  Features can be downloaded from `?`.
-
+  Features can be downloaded from [here](https://universidaddealcala-my.sharepoint.com/:u:/g/personal/robertoj_lopez_uah_es/EaCOYYiRcOBCk_Y6I0tUHU0BvUp1jP_jpCkEu3Wn7mpULA?e=gCyedc&download=1).
+  
   Once you have them, store them as: `h5/c3d-activitynet.hdf5` 
 
 ###### Thumos'14
 
 - Ground Truth:
 
-  For Thumos'14, we have converted its original annotations to the ActivityNet format in a `.json` file. We share itwith this repo at `gt/gt-thumos14.json`.
+  For Thumos'14, we have converted its original annotations to the ActivityNet format in a `.json` file. We share this in the repo at `gt/gt-thumos14.json`.
 
 - Features:
 
   We have extracted features with a C3D pretrained on Sports1M dataset. Concretely, we used feature vectors from fc6 layer, with dimension 4096, corresponding each of them to a non-overlapped 16-frame volume.
 
-  Features can be downloaded from `?`.
+  Features can be downloaded from [here](https://universidaddealcala-my.sharepoint.com/:u:/g/personal/robertoj_lopez_uah_es/EaCOYYiRcOBCk_Y6I0tUHU0BvUp1jP_jpCkEu3Wn7mpULA?e=gCyedc&download=1).
 
   Once you have them, store them as: `h5/c3d-thumos14.hdf5` 
 
@@ -100,13 +100,13 @@ Once you have prepared the data, change the current directory to `source/`. Runn
 - `-set`: dataset subset.
 - `-init_n`: initial number of samples to take when starting the algorithm or a new proposal.
 - `-n`: number of new samples to take when analysing the same proposal.
-- `-th`: classification error rate.
+- `-th`: classification error rate threshold.
 - `-c`: C parameter of the Linear SVM.
 - `-rpth`: rank pooling threshold.
 - `-res`: `.json` file with results.
 - `-eval`: to set only evaluation mode.
 - `-log`: log file with execution information.
-- `-fig`: figure with th AR-AN metric.
+- `-fig`: figure name to plot the AR-AN metric.
 
 #### Reproducing our results
 
